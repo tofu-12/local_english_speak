@@ -1,0 +1,8 @@
+# ライブラリ
+accelerate==1.9.0
+soundfile==0.13.1
+torch==2.7.1
+transformers==4.46.1
+
+# モデル
+git+https://github.com/huggingface/parler-tts
