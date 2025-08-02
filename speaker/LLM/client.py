@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
@@ -67,6 +69,12 @@ class LLMClient:
         """ 古い会話履歴を消すメソッド """
         if len(self.conversation) > MAX_CONVERSATION_HISTORY_LENGTH:
             self.conversation = self.conversation[-MAX_CONVERSATION_HISTORY_LENGTH:]
+    
+    def get_conversation(self) -> List[Dict[str, str]]:
+        return self.conversation
+
+    def set_conversation(self, conversation: List[Dict[str, str]]) -> None:
+        self.conversation = conversation
 
 
 if __name__ == "__main__":

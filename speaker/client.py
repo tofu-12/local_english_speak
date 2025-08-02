@@ -16,6 +16,7 @@ warnings.simplefilter('ignore')
 
 class Speaker:
     def __init__(self):
+        self.conversation = []
         self.device = self._get_device()
 
 
@@ -35,7 +36,9 @@ class Speaker:
 
         # text -> text
         client = LLMClient(self.device)
+        client.set_conversation(self.conversation)
         response = client.run(text)
+        self.conversation = client.get_conversation()
 
         # text -> audio
         client = TTSClient(self.device)
